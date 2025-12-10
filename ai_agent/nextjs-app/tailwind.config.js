@@ -8,6 +8,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        intapp: {
+          dark: '#1e3a5f',      // Dark blue header
+          light: '#4a90e2',     // Light blue sub-header
+          green: '#28a745',     // Green buttons
+          'green-hover': '#218838',
+        },
         primary: {
           50: '#f0f9ff',
           100: '#e0f2fe',

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { RefreshCw, Trash2, CheckCircle2, AlertCircle, XCircle } from 'lucide-react'
+import { RefreshCw, CheckCircle2, AlertCircle, XCircle } from 'lucide-react'
 import { User, UpdateResults } from '@/types'
 import { updateUsers } from '@/lib/api'
 
@@ -44,27 +44,32 @@ export default function ActionButtons({
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 space-y-4">
-      <h2 className="text-xl font-semibold text-gray-900">⚡ Actions</h2>
+    <div className="space-y-4">
+      {/* Action Buttons - Green Horizontal Layout */}
+      <div className="flex flex-wrap gap-3">
+        <button
+          onClick={handleUpdateUsers}
+          disabled={isUpdating}
+          className="px-4 py-2 bg-intapp-green text-white rounded hover:bg-intapp-green-hover disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 transition-colors font-medium text-sm"
+        >
+          {isUpdating ? (
+            <>
+              <RefreshCw className="w-4 h-4 animate-spin" />
+              Updating...
+            </>
+          ) : (
+            'Update Users in Service'
+          )}
+        </button>
+        <button
+          onClick={onClearData}
+          className="px-4 py-2 bg-intapp-green text-white rounded hover:bg-intapp-green-hover flex items-center gap-2 transition-colors font-medium text-sm"
+        >
+          Clear Processed Data
+        </button>
+      </div>
 
-      <button
-        onClick={handleUpdateUsers}
-        disabled={isUpdating}
-        className="w-full px-4 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-colors font-medium"
-      >
-        {isUpdating ? (
-          <>
-            <RefreshCw className="w-5 h-5 animate-spin" />
-            Updating Users...
-          </>
-        ) : (
-          <>
-            <RefreshCw className="w-5 h-5" />
-            Update Users in Service
-          </>
-        )}
-      </button>
-
+      {/* Results Display */}
       {results && (
         <div className="mt-4 space-y-3">
           {results.error ? (
@@ -93,7 +98,7 @@ export default function ActionButtons({
 
               <button
                 onClick={() => setShowDetails(!showDetails)}
-                className="w-full text-sm text-primary-600 hover:text-primary-700 py-2"
+                className="text-sm text-blue-600 hover:text-blue-800 py-2"
               >
                 {showDetails ? 'Hide' : 'Show'} Detailed Results
               </button>
@@ -109,14 +114,6 @@ export default function ActionButtons({
           )}
         </div>
       )}
-
-      <button
-        onClick={onClearData}
-        className="w-full px-4 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 flex items-center justify-center gap-2 transition-colors font-medium"
-      >
-        <Trash2 className="w-5 h-5" />
-        Clear Processed Data
-      </button>
     </div>
   )
 }

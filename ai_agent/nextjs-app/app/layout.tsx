@@ -2,11 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'User Data AI Agent',
-  description: 'AI-powered agent for uploading and processing user data from Excel files',
-  icons: {
-    icon: '🤖',
-  },
+  title: 'Intapp Admin Portal - Users',
+  description: 'Admin Portal for managing users and user data',
 }
 
 export default function RootLayout({

@@ -63,15 +63,15 @@ export default function ChatInterface({
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md flex flex-col h-[calc(100vh-12rem)]">
+    <div className="bg-white rounded-lg shadow-md flex flex-col h-full">
       <div className="p-6 border-b border-gray-200">
         <h2 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
-          <Bot className="w-5 h-5 text-primary-600" />
+          <Bot className="w-5 h-5 text-intapp-light" />
           Chat with AI Agent
         </h2>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-6 space-y-4">
+      <div className="flex-1 overflow-y-auto p-6 space-y-4 min-h-0">
         {messages.map((message, index) => (
           <div
             key={index}
@@ -80,14 +80,14 @@ export default function ChatInterface({
             }`}
           >
             {message.role === 'assistant' && (
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center">
-                <Bot className="w-5 h-5 text-primary-600" />
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-intapp-light/20 flex items-center justify-center">
+                <Bot className="w-5 h-5 text-intapp-light" />
               </div>
             )}
             <div
               className={`max-w-[80%] rounded-lg px-4 py-3 ${
                 message.role === 'user'
-                  ? 'bg-primary-600 text-white'
+                  ? 'bg-intapp-light text-white'
                   : 'bg-gray-100 text-gray-900'
               }`}
             >
@@ -103,8 +103,8 @@ export default function ChatInterface({
 
         {isLoading && (
           <div className="flex gap-4 justify-start">
-            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center">
-              <Bot className="w-5 h-5 text-primary-600" />
+            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-intapp-light/20 flex items-center justify-center">
+              <Bot className="w-5 h-5 text-intapp-light" />
             </div>
             <div className="bg-gray-100 rounded-lg px-4 py-3">
               <div className="flex gap-1">
@@ -126,13 +126,13 @@ export default function ChatInterface({
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask me to help you upload and process user data..."
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-intapp-light"
             disabled={isLoading}
           />
           <button
             type="submit"
             disabled={!input.trim() || isLoading}
-            className="px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 transition-colors"
+            className="px-6 py-2 bg-intapp-light text-white rounded-lg hover:bg-intapp-light/90 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 transition-colors"
           >
             <Send className="w-4 h-4" />
             Send

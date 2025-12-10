@@ -27,6 +27,18 @@ class ExcelProcessor:
         """
         try:
             df = pd.read_excel(BytesIO(file_content), sheet_name=sheet_name)
+            
+            # Ensure we have a DataFrame, not a dict (which can happen with sheet_name=None)
+            if isinstance(df, dict):
+                # If multiple sheets, take the first one
+                if df:
+                    df = list(df.values())[0]
+                else:
+                    raise ValueError("No sheets found in Excel file")
+            
+            if not isinstance(df, pd.DataFrame):
+                raise ValueError(f"Expected DataFrame, got {type(df)}")
+            
             logger.info(f"Successfully read Excel file with {len(df)} rows")
             return df
         except Exception as e:

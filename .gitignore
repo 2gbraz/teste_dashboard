@@ -21,3 +21,15 @@ agent_state.json
 # OS
 .DS_Store
 Thumbs.db
+
+# Next.js
+node_modules/
+.next/
+out/
+build/
+dist/
+*.log
+
+# Generated test files
+**/sample_*.xlsx
+**/sample_*.csv

@@ -65,3 +65,4 @@ class UserServiceClient:
                 results[user.get('id', 'unknown')] = False
         return results
 
+

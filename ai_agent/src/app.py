@@ -121,3 +121,4 @@ if len(st.session_state.messages) == 0:
     with st.chat_message("assistant"):
         st.markdown(initial_message)
 
+

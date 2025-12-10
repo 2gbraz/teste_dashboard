@@ -121,3 +121,4 @@ class AIAgent:
         if hasattr(self, 'processed_users'):
             delattr(self, 'processed_users')
 
+
